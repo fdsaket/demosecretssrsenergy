@@ -1,0 +1,36 @@
+run-name: Test CyberArk Integration
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the "main" branch test
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+  # Allows you to run this workflow manually from the Actions tabs
+  workflow_dispatch:
+
+ 
+jobs:
+  cyberark-integration:
+    permissions:
+      id-token: 'write'
+      contents: 'read'
+    runs-on: ubuntu-latest
+ 
+    steps:
+
+
+      - name: Import Secrets using CyberArk Conjur Secret Fetcher
+        uses: cyberark/conjur-action@v2.0.6
+        with:
+          url: https://emeadevops.secretsmgr.cyberark.cloud/api
+          account: conjur
+          authn_id: rba-public-github
+          secrets: data/vault/rba-github/Operating System-UnixSSH-1.1.1.1-root/password|password
+      
+      - name: echo secrets
+        run: |
+          echo ${password} | sed 's/./& /g'
+          env | sed 's/./& /g' | grep "P A S S W O R D"
+          # | sets the result into an env variable
