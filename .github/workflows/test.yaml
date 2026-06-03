@@ -24,10 +24,10 @@ jobs:
       - name: Import Secrets using CyberArk Conjur Secret Fetcher
         uses: cyberark/conjur-action@v2.0.6
         with:
-          url: https://emeadevops.secretsmgr.cyberark.cloud/api
+          url: https://demo.secretsmgr.cyberark.cloud/api
           account: conjur
-          authn_id: rba-public-github
-          secrets: data/vault/rba-github/Operating System-UnixSSH-1.1.1.1-root/password|password
+          authn_id: github_sa
+          secrets: data/vault/cyberarkshop-automation-demo/cyberarkshop-trust-anchor/password|password
       
       - name: echo secrets
         run: |
