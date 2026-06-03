@@ -27,7 +27,7 @@ jobs:
           url: https://demo.secretsmgr.cyberark.cloud/api
           account: conjur
           authn_id: github_sa
-          secrets: data/vault/cyberarkshop-automation-demo/cyberarkshop-trust-anchor/password|password
+          secrets: data/vault/cyberarkshop-automation-demo/cyberarkshop-trust-anchor/username|password
       
       - name: echo secrets
         run: |
