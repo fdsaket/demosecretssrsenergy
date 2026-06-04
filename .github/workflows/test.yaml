@@ -1,36 +1,3 @@
-config:
-  connection:
-    platform: vaas
-    credentials:
-      apiKey: '2ffa71a3-bff2-4de2-908e-7ba4a82c69f6' # APIKEY as Environment variable
-certificateTasks:
-  - name: myCertificate # Task Identifier
-    renewBefore: 31d
-    setEnvVars: ["thumbprint", "serial"] #will set environment variables VCERT_TASKNAME_THUMBPRINT and VCERT_TASKNAME_SERIAL
-    request:
-      csr: local
-      subject:
-        # Templating needs to go between single quotes to avoid issues when refreshing tokens and saving back
-        commonName: 'bootcamp.cyberark.com'
-        country: US
-        locality: Salt Lake City
-        state: Utah
-        organization: Venafi Inc
-        orgUnits:
-          - engineering
-          - marketing
-      zone: "Test app\\Default"
-    installations:
-      - format: PEM
-        file: "/Users/saket.agarwalla/Downloads/vcert_v5.13.2_darwin/certificate/cert.pem"
-        chainFile: "/Users/saket.agarwalla/Downloads/vcert_v5.13.2_darwin/certificate/chain.cer"
-        keyFile: "/Users/saket.agarwalla/Downloads/vcert_v5.13.2_darwin/certificate/key.pem"
-        afterInstallAction: "echo Success!!!"
-
-
-*NFcIxMf!@EGIECg
-
-
 run-name: Test CyberArk Integration
 # Controls when the workflow will run
 on:
