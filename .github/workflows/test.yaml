@@ -27,7 +27,7 @@ jobs:
           url: https://demo.secretsmgr.cyberark.cloud/api
           account: conjur
           authn_id: github_sa
-          secrets: data/vault/dso-conjur-cloud/Operating System-DSOUnixViaSSH-AWS-WeatherAppApiKey/password|password
+          secrets: data/vault/Microsoft SQL/Database-Demo_MySQL_DB-testusernamesrs/password|password
       
       - name: echo secrets
         run: |
